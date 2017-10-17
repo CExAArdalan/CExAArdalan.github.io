@@ -1,25 +1,27 @@
 // Setting the message for mandatory
 function checkMandatory(fieldName) {
-	$("span").text("Fill " + fieldName +"!").show().fadeOut(1000);
+	$("span").text("Fill " + fieldName + "!").show().fadeOut(3000);
 }
 // Generate the file
 function makeFile(text) {
-	var data = new Blob([text], {type: 'json'});
+	var data = new Blob([text], {
+		type: 'json'
+	});
 	var textFile = window.URL.createObjectURL(data);
 	return textFile;
 };
 // On click for generate file
-$(document).ready(function() {
+$(document).ready(function () {
 	autosize(document.querySelectorAll('textarea'));
 	$("#form-submit").click(function (event) {
 		var picklistValues = $("#picklist-values").val();
-		if (picklistValues === ''){
+		if (picklistValues === '') {
 			checkMandatory("Picklist Values");
 			event.preventDefault();
 			return;
 		}
 		var picklistName = $("#picklist-name").val();
-		if (picklistName === ''){
+		if (picklistName === '') {
 			checkMandatory("Picklist Name");
 			event.preventDefault();
 			return;
